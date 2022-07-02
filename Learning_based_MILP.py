@@ -35,13 +35,23 @@ class MILP_data:
     x_opt  : np.ndarray         = field(init=False, repr=False) 
     y_opt  : np.ndarray         = field(init=False, repr=False)
 
+    feas_nodes: List[LP_SP_data]= field(init=False, repr=False)
+
 
     def __post_init__(self):
 
         x_opt=opt_sp.x
         y_opt=opt_sp.y
 
-        
+        cov_set=[]
+        feas_nodes=[]
+        for sp in cover:
+            cov_set.append(np.array([sp.lb, sp.ub]))
+            if sp.feas:
+                feas_nodes.append(sp)
+
+
+
 
 
 #EventHandler for collecting node information
