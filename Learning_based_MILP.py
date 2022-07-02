@@ -2,6 +2,46 @@ from logging import NullHandler
 from pyscipopt import Model, Eventhdlr, SCIP_EVENTTYPE, quicksum
 import numpy as np
 import math
+from dataclasses import dataclass, field
+
+@dataclass
+class LP_SP_data:
+    b    : np.ndarray
+    lb   : np.ndarray
+    ub   : np.ndarray
+
+    x    : np.ndarray
+    y    : np.ndarray
+    lmbd : np.ndarray
+
+    cost : np.ndarray
+
+    feas : bool
+
+
+
+
+
+
+@dataclass
+class MILP_data:
+    b      : np.ndarray
+
+    opt_sp : LP_SP_data
+    cover  : List[LP_SP_data]
+
+    cov_set: List[nd.ndarray]   = field(init=False, repr=False)
+
+    x_opt  : np.ndarray         = field(init=False, repr=False) 
+    y_opt  : np.ndarray         = field(init=False, repr=False)
+
+
+    def __post_init__(self):
+
+        x_opt=opt_sp.x
+        y_opt=opt_sp.y
+
+        
 
 
 #EventHandler for collecting node information
