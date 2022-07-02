@@ -422,7 +422,14 @@ class nodelist_Handler:
         self.nodelist=nodelist
         self.parentsId=set(self.filter("parent"))
         self.nodesId=set(self.filter("number"))
+        self.OpenNodesIdPerIteration=self.filter("openNodesNumber")
+        self.allOpenNodes=np.array([0])
+        for i in range (len(self.OpenNodesIdPerIteration)):
+            self.allOpenNodesId=np.append(self.allOpenNodesId,np.array(self.OpenNodesIdPerIteration[i]))
+        
         self.leavesId=self.nodesId-self.parentsId
+        self.feasibleLeavesId=self.leavesId & self.allOpenNodesId
+        self.infeasibleLeavesId=self.leavesId-self.allOpenNodesId
         self.leaves=self.filter(None,None,"number",self.leavesId)
         self.binary_variablesId=list(self.nodelist[0]("LPsol_bin").keys())
             
