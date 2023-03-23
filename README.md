@@ -1,4 +1,5 @@
 # LAMPOS: Learned-based Approximate Mixed-integer MPC with Parametric Optimality Strategies
+https://arxiv.org/abs/2303.12152
 
 <img width="604" alt="lampos" src="https://user-images.githubusercontent.com/42875310/225999154-e5a6e17e-9625-42f2-9b73-84625164a7da.png">
 
