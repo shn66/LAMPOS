@@ -283,7 +283,7 @@ class nodelist_Handler:
 
    
     
-    def recursive_make_cover(self,ref_sp): # Method for cover completions (See Appendix)
+    def recursive_make_cover(self,ref_sp): # Method for cover completions (See README.md in Offline Folder)
         binary_vars=self.binary_variablesId
         nodes=self.leaves
     
